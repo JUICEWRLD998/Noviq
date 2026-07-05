@@ -1,0 +1,134 @@
+/* ============================================================================
+   Noviq — globals.css
+   Single entry point: pulls in tokens + motion, then applies a modern reset
+   and base element styling. Import this once at the app root.
+   ========================================================================== */
+
+@import "./tokens.css";
+@import "./motion.css";
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  /* Dark-first: default theme lives on :root in tokens.css. */
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--surface-0);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-step-0);
+  line-height: var(--lh-normal);
+  font-weight: var(--weight-regular);
+  text-rendering: optimizeLegibility;
+  transition: var(--transition-colors);
+}
+
+/* ── Typography defaults ──────────────────────────────────────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+/* Money, addresses, hashes read better with tabular figures. */
+.tabular,
+[data-tabular] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: var(--transition-colors);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media (hover: none) {
+  /* Touch devices: don't leave hover-only affordances stuck. */
+  a:hover {
+    color: var(--link);
+  }
+}
+
+/* ── Focus visibility ─────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+::selection {
+  background: var(--accent-muted);
+  color: var(--text-primary);
+}
+
+/* ── Scrollbar (subtle, tinted) ───────────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}

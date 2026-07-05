@@ -1,0 +1,42 @@
+/* ============================================================================
+   Noviq — Motion Tokens (single source of truth)
+   These CSS vars are mirrored exactly in motion.ts so CSS transitions,
+   Framer Motion, and GSAP all animate with identical feel.
+   ========================================================================== */
+
+:root {
+  /* Easings. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-in-quart: cubic-bezier(0.5, 0, 0.75, 0);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Durations. */
+  --dur-1: 120ms; /* micro: hover, press          */
+  --dur-2: 200ms; /* small: toggles, tooltips      */
+  --dur-3: 320ms; /* standard: cards, panels       */
+  --dur-4: 500ms; /* large: page/section reveals   */
+  --dur-5: 800ms; /* cinematic: hero beats         */
+
+  /* Common composed transitions. */
+  --transition-colors: color var(--dur-2) var(--ease-out-quart),
+    background-color var(--dur-2) var(--ease-out-quart),
+    border-color var(--dur-2) var(--ease-out-quart);
+  --transition-transform: transform var(--dur-3) var(--ease-out-expo);
+  --transition-base: all var(--dur-2) var(--ease-out-quart);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Reduced motion — neutralize non-essential motion globally.
+   ────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

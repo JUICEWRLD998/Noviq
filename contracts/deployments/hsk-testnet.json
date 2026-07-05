@@ -1,0 +1,16 @@
+{
+  "chainId": 133,
+  "network": "HSK Chain Testnet",
+  "rpcUrl": "https://testnet.hsk.xyz",
+  "explorerUrl": "https://testnet-explorer.hsk.xyz",
+  "contracts": {
+    "Hello": {
+      "address": "0x09Ade87D05bfF239e4a28bA266c2D88585D736C4",
+      "deployTx": "0x807b8fa066e54fdb0f45f58c61a542680edae4d088ef0d2b7316214971997d3c",
+      "block": 30026785,
+      "deployer": "0x84848A21d1A30D5543719F3D1A0Da2F9232a4fAE",
+      "verified": true,
+      "note": "Phase-0 bring-up contract. Not part of the production protocol."
+    }
+  }
+}

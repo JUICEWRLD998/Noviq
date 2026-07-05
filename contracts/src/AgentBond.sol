@@ -62,10 +62,7 @@ contract AgentBond is ReentrancyGuard {
     }
 
     /// @notice Slash part/all of the bond. Only the account owner may call.
-    function slash(address account, uint256 amount, string calldata reason)
-        external
-        nonReentrant
-    {
+    function slash(address account, uint256 amount, string calldata reason) external nonReentrant {
         if (msg.sender != ICovenantRoles(account).owner()) revert NotAccountOwner();
         Bond storage b = bonds[account];
         if (amount == 0) revert ZeroAmount();

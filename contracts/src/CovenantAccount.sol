@@ -91,10 +91,7 @@ contract CovenantAccount is ReentrancyGuard {
     }
 
     /// @notice Queue a (large) action to start its timelock. Owner or agent.
-    function queueAction(address target, uint256 value, bytes calldata data)
-        external
-        returns (bytes32 h)
-    {
+    function queueAction(address target, uint256 value, bytes calldata data) external returns (bytes32 h) {
         if (msg.sender != owner && msg.sender != agent) revert NotAgent();
         h = hashAction(target, value, data);
         queuedAt[h] = block.timestamp;
@@ -150,11 +147,7 @@ contract CovenantAccount is ReentrancyGuard {
     // ── Views / helpers ──────────────────────────────────────────────────────
 
     /// @notice Deterministic id for an action intent (no nonce; approvals are one-shot).
-    function hashAction(address target, uint256 value, bytes calldata data)
-        public
-        pure
-        returns (bytes32)
-    {
+    function hashAction(address target, uint256 value, bytes calldata data) public pure returns (bytes32) {
         return keccak256(abi.encode(target, value, data));
     }
 

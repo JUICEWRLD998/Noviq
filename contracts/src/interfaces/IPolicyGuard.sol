@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.28;
 
-import {
-    ActionInfo, AssetLimit, PolicyConfig, ReasonCode, SpendWindow
-} from "../libraries/PolicyTypes.sol";
+import {ActionInfo, AssetLimit, PolicyConfig, ReasonCode, SpendWindow} from "../libraries/PolicyTypes.sol";
 
 /// @title IPolicyGuard
 /// @notice On-chain covenant registry + enforcer. A {CovenantAccount} routes
@@ -14,9 +12,7 @@ interface IPolicyGuard {
     event PolicySet(address indexed account, uint256 assetCount, uint256 recipientCount);
 
     /// @notice Emitted for every allowed action (the on-chain audit trail).
-    event ActionAllowed(
-        address indexed account, address indexed asset, address indexed recipient, uint256 amount
-    );
+    event ActionAllowed(address indexed account, address indexed asset, address indexed recipient, uint256 amount);
 
     /// @notice Compile/replace the covenant for `msg.sender` (a CovenantAccount).
     function setPolicy(
@@ -31,8 +27,7 @@ interface IPolicyGuard {
     /// @param approved Whether a large action has satisfied timelock/co-sign
     ///        (the calling account is trusted for its own approval state).
     /// @dev Reverts with {PolicyViolation} carrying the failing {ReasonCode}.
-    function checkAndRecord(address target, uint256 value, bytes calldata data, bool approved)
-        external;
+    function checkAndRecord(address target, uint256 value, bytes calldata data, bool approved) external;
 
     /// @notice Dry-run the covenant for `account` without mutating state.
     function simulate(address account, address target, uint256 value, bytes calldata data)
@@ -41,10 +36,7 @@ interface IPolicyGuard {
         returns (bool allowed, ReasonCode code);
 
     /// @notice Decode an action's financial semantics (asset/amount/recipient/selector).
-    function decodeAction(address target, uint256 value, bytes calldata data)
-        external
-        pure
-        returns (ActionInfo memory);
+    function decodeAction(address target, uint256 value, bytes calldata data) external pure returns (ActionInfo memory);
 
     // ── Views for the account + UI ─────────────────────────────────────────
     function isActive(address account) external view returns (bool);
@@ -55,9 +47,6 @@ interface IPolicyGuard {
         external
         view
         returns (bool allowed, uint256 perTxCap, uint256 dailyCap);
-    function getSpendWindow(address account, address asset)
-        external
-        view
-        returns (SpendWindow memory);
+    function getSpendWindow(address account, address asset) external view returns (SpendWindow memory);
     function isRecipientAllowed(address account, address recipient) external view returns (bool);
 }

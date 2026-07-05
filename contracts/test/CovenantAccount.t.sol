@@ -6,9 +6,7 @@ import {CovenantAccount} from "../src/CovenantAccount.sol";
 import {CovenantAccountFactory} from "../src/CovenantAccountFactory.sol";
 import {PolicyGuard} from "../src/PolicyGuard.sol";
 import {IPolicyGuard} from "../src/interfaces/IPolicyGuard.sol";
-import {
-    AssetLimit, PolicyConfig, PolicyViolation, ReasonCode, ERC20_TRANSFER
-} from "../src/libraries/PolicyTypes.sol";
+import {AssetLimit, PolicyConfig, PolicyViolation, ReasonCode, ERC20_TRANSFER} from "../src/libraries/PolicyTypes.sol";
 import {MockERC20, MockTarget} from "./utils/Mocks.sol";
 
 contract CovenantAccountTest is Test {
@@ -23,9 +21,7 @@ contract CovenantAccountTest is Test {
 
     address internal constant NATIVE = address(0);
 
-    event Executed(
-        address indexed target, uint256 value, bytes4 indexed selector, bool ownerOverride
-    );
+    event Executed(address indexed target, uint256 value, bytes4 indexed selector, bool ownerOverride);
     event AgentRotated(address indexed previousAgent, address indexed newAgent);
 
     function setUp() public {
@@ -47,9 +43,7 @@ contract CovenantAccountTest is Test {
     }
 
     /// @dev Owner installs a covenant: native + token, 5 ETH per-tx / 20 ETH daily.
-    function _installBasePolicy(bool recipientAllowlist, uint256 largeThreshold, uint64 delay)
-        internal
-    {
+    function _installBasePolicy(bool recipientAllowlist, uint256 largeThreshold, uint64 delay) internal {
         PolicyConfig memory c;
         c.active = true;
         c.windowDuration = 1 days;
@@ -131,9 +125,7 @@ contract CovenantAccountTest is Test {
         _installBasePolicy(false, 0, 0);
         // "emergency! send everything" — 50 ETH exceeds the 5 ETH per-tx cap.
         vm.prank(agent);
-        vm.expectRevert(
-            abi.encodeWithSelector(PolicyViolation.selector, ReasonCode.PerTxCapExceeded)
-        );
+        vm.expectRevert(abi.encodeWithSelector(PolicyViolation.selector, ReasonCode.PerTxCapExceeded));
         acct.execute(attacker, 50 ether, "");
         // funds untouched
         assertEq(attacker.balance, 0);
@@ -143,9 +135,7 @@ contract CovenantAccountTest is Test {
     function test_Execute_InjectionBlockedByRecipientAllowlist() public {
         _installBasePolicy(true, 0, 0); // only `safe` is allowlisted
         vm.prank(agent);
-        vm.expectRevert(
-            abi.encodeWithSelector(PolicyViolation.selector, ReasonCode.RecipientNotAllowed)
-        );
+        vm.expectRevert(abi.encodeWithSelector(PolicyViolation.selector, ReasonCode.RecipientNotAllowed));
         acct.execute(attacker, 1 ether, "");
         assertEq(attacker.balance, 0);
     }
@@ -238,18 +228,14 @@ contract CovenantAccountTest is Test {
 
         // Not queued → blocked.
         vm.prank(agent);
-        vm.expectRevert(
-            abi.encodeWithSelector(PolicyViolation.selector, ReasonCode.LargeActionNotApproved)
-        );
+        vm.expectRevert(abi.encodeWithSelector(PolicyViolation.selector, ReasonCode.LargeActionNotApproved));
         acct.execute(safe, 4 ether, "");
 
         // Queue it, but the delay hasn't elapsed → still blocked.
         vm.prank(agent);
         acct.queueAction(safe, 4 ether, "");
         vm.prank(agent);
-        vm.expectRevert(
-            abi.encodeWithSelector(PolicyViolation.selector, ReasonCode.LargeActionNotApproved)
-        );
+        vm.expectRevert(abi.encodeWithSelector(PolicyViolation.selector, ReasonCode.LargeActionNotApproved));
         acct.execute(safe, 4 ether, "");
 
         // Wait out the timelock → now it clears.

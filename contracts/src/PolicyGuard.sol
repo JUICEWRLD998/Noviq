@@ -117,9 +117,7 @@ contract PolicyGuard is IPolicyGuard {
     // ── Enforcement ──────────────────────────────────────────────────────────
 
     /// @inheritdoc IPolicyGuard
-    function checkAndRecord(address target, uint256 value, bytes calldata data, bool approved)
-        external
-    {
+    function checkAndRecord(address target, uint256 value, bytes calldata data, bool approved) external {
         address account = msg.sender;
         ActionInfo memory action = _decode(target, value, data);
         ReasonCode code = _evaluate(account, target, action, approved);
@@ -174,9 +172,7 @@ contract PolicyGuard is IPolicyGuard {
         if (c.targetAllowlistEnabled && !_target[account][target]) {
             return ReasonCode.TargetNotAllowed;
         }
-        if (
-            c.largeActionThreshold != 0 && action.amount >= c.largeActionThreshold && !approved
-        ) {
+        if (c.largeActionThreshold != 0 && action.amount >= c.largeActionThreshold && !approved) {
             return ReasonCode.LargeActionNotApproved;
         }
         return ReasonCode.OK;
@@ -207,11 +203,7 @@ contract PolicyGuard is IPolicyGuard {
     }
 
     /// @dev Extract (asset, amount, recipient, selector) from a raw call.
-    function _decode(address target, uint256 value, bytes calldata data)
-        private
-        pure
-        returns (ActionInfo memory info)
-    {
+    function _decode(address target, uint256 value, bytes calldata data) private pure returns (ActionInfo memory info) {
         if (data.length < 4) {
             // Pure native transfer (or empty call): value goes to `target`.
             info.asset = address(0);
@@ -286,11 +278,7 @@ contract PolicyGuard is IPolicyGuard {
     }
 
     /// @inheritdoc IPolicyGuard
-    function getSpendWindow(address account, address asset)
-        external
-        view
-        returns (SpendWindow memory)
-    {
+    function getSpendWindow(address account, address asset) external view returns (SpendWindow memory) {
         return _spend[account][asset];
     }
 

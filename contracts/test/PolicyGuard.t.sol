@@ -27,9 +27,7 @@ contract PolicyGuardTest is Test {
     address internal mallory = address(0xBAD);
 
     event PolicySet(address indexed account, uint256 assetCount, uint256 recipientCount);
-    event ActionAllowed(
-        address indexed account, address indexed asset, address indexed recipient, uint256 amount
-    );
+    event ActionAllowed(address indexed account, address indexed asset, address indexed recipient, uint256 amount);
 
     function setUp() public {
         guard = new PolicyGuard();
@@ -250,13 +248,11 @@ contract PolicyGuardTest is Test {
 
     function test_Simulate_MatchesEvaluation_NoStateChange() public {
         _setBasePolicy();
-        (bool okAllowed, ReasonCode okCode) =
-            guard.simulate(address(this), alice, 1 ether, "");
+        (bool okAllowed, ReasonCode okCode) = guard.simulate(address(this), alice, 1 ether, "");
         assertTrue(okAllowed);
         assertEq(uint256(okCode), uint256(ReasonCode.OK));
 
-        (bool badAllowed, ReasonCode badCode) =
-            guard.simulate(address(this), alice, 101 ether, "");
+        (bool badAllowed, ReasonCode badCode) = guard.simulate(address(this), alice, 101 ether, "");
         assertFalse(badAllowed);
         assertEq(uint256(badCode), uint256(ReasonCode.PerTxCapExceeded));
 
@@ -327,6 +323,25 @@ contract PolicyGuardTest is Test {
             assertFalse(allowed);
             assertEq(uint256(code), uint256(ReasonCode.PerTxCapExceeded));
         }
+    }
+
+    // ── config views for the account + UI ──────────────────────────────────────
+
+    function test_ConfigViews() public {
+        PolicyConfig memory c = _cfg();
+        c.largeActionThreshold = 42 ether;
+        c.timelockDelay = 3 days;
+        AssetLimit[] memory limits = new AssetLimit[](1);
+        limits[0] = AssetLimit(NATIVE, 1 ether, 1 ether);
+        guard.setPolicy(c, limits, _emptyAddrs(), _emptySelectors(), _emptyAddrs());
+
+        assertEq(guard.timelockDelay(address(this)), 3 days);
+        assertEq(guard.largeActionThreshold(address(this)), 42 ether);
+        PolicyConfig memory got = guard.getConfig(address(this));
+        assertTrue(got.active);
+        assertEq(got.windowDuration, 1 days);
+        assertEq(got.largeActionThreshold, 42 ether);
+        assertEq(got.timelockDelay, 3 days);
     }
 
     // ── util ────────────────────────────────────────────────────────────────────

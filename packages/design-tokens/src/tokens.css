@@ -89,10 +89,8 @@
   --weight-bold: 700;
 
   /* Font role stacks. next/font supplies --font-display/-sans/-mono on <html>. */
-  --font-display: var(--font-display-src, "Space Grotesk"), ui-sans-serif, system-ui,
-    sans-serif;
-  --font-sans: var(--font-sans-src, "Geist"), ui-sans-serif, system-ui, -apple-system,
-    sans-serif;
+  --font-display: var(--font-display-src, "Space Grotesk"), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans-src, "Geist"), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-mono-src, "Geist Mono"), ui-monospace, "SFMono-Regular", monospace;
 
   /* Radii. */

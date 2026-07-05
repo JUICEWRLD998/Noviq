@@ -20,9 +20,8 @@
   --dur-5: 800ms; /* cinematic: hero beats         */
 
   /* Common composed transitions. */
-  --transition-colors: color var(--dur-2) var(--ease-out-quart),
-    background-color var(--dur-2) var(--ease-out-quart),
-    border-color var(--dur-2) var(--ease-out-quart);
+  --transition-colors: color var(--dur-2) var(--ease-out-quart), background-color var(--dur-2)
+    var(--ease-out-quart), border-color var(--dur-2) var(--ease-out-quart);
   --transition-transform: transform var(--dur-3) var(--ease-out-expo);
   --transition-base: all var(--dur-2) var(--ease-out-quart);
 }

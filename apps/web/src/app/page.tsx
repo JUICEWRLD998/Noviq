@@ -1,5 +1,5 @@
-import { clientEnv } from "@noviq/env"
 import patterns from "@noviq/design-tokens/patterns.module.css"
+import { clientEnv } from "@noviq/env"
 import Link from "next/link"
 import styles from "./page.module.css"
 
@@ -17,8 +17,7 @@ export default function Home() {
         <p className={styles.kicker}>Noviq · Phase 1 · design system online</p>
         <h1 className={styles.title}>Don&apos;t trust the agent. Trust the covenant.</h1>
         <p className={styles.lede}>
-          Programmable trust for autonomous AI money. Safety is enforced on-chain, not in the
-          model.
+          Programmable trust for autonomous AI money. Safety is enforced on-chain, not in the model.
         </p>
 
         <dl className={styles.grid}>

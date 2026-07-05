@@ -42,9 +42,7 @@
     transparent 62%,
     oklch(0.72 0.08 285 / 0.22) 100%
   );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
@@ -86,15 +84,13 @@
 }
 
 .mesh::before {
-  background-image:
-    radial-gradient(38% 42% at 22% 28%, oklch(0.62 0.19 285 / 0.4), transparent 70%),
+  background-image: radial-gradient(38% 42% at 22% 28%, oklch(0.62 0.19 285 / 0.4), transparent 70%),
     radial-gradient(34% 38% at 78% 20%, oklch(0.55 0.19 285 / 0.28), transparent 70%);
   animation: meshDriftA 24s var(--ease-in-out) infinite alternate;
 }
 
 .mesh::after {
-  background-image:
-    radial-gradient(40% 44% at 68% 78%, oklch(0.5 0.14 300 / 0.3), transparent 70%),
+  background-image: radial-gradient(40% 44% at 68% 78%, oklch(0.5 0.14 300 / 0.3), transparent 70%),
     radial-gradient(30% 34% at 30% 82%, oklch(0.62 0.16 250 / 0.24), transparent 70%);
   animation: meshDriftB 30s var(--ease-in-out) infinite alternate;
 }

@@ -20,6 +20,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@noviq/design-tokens':
+        specifier: workspace:*
+        version: link:../../packages/design-tokens
       '@noviq/env':
         specifier: workspace:*
         version: link:../../packages/env

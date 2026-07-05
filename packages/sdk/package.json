@@ -10,7 +10,8 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "gen:abis": "node scripts/generate-abis.mjs"
   },
   "dependencies": {
     "@noviq/env": "workspace:*",
@@ -18,6 +19,7 @@
     "zod": "3.24.1"
   },
   "devDependencies": {
+    "@types/node": "22.10.5",
     "typescript": "5.7.3"
   }
 }

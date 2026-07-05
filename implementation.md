@@ -133,9 +133,11 @@ Screens (all consuming semantic tokens; all with reduced-motion + `hover:none` f
 - [ ] `tokens.css` (3 tiers, OKLCH), `globals.css`, `motion.css` + `motion.ts`, `patterns.module.css` (glass/edge-light/grain/mesh).
 - [ ] `/styleguide` route; verify dark-first, no pure black/white, fluid type, reduced-motion, `hover:none`.
 
-**Phase 2 — Contracts**
-- [ ] `CovenantAccount`, `PolicyGuard`/`CovenantRegistry`, `AgentBond` + events.
-- [ ] Foundry tests (all cases in §3); deploy + verify on HSK testnet; export ABIs to `packages/sdk`.
+**Phase 2 — Contracts** ✅
+- [x] `CovenantAccount`, `PolicyGuard`/`CovenantRegistry`, `AgentBond` (+ `CovenantAccountFactory`) + events.
+- [x] Foundry tests (all cases in §3): 61 passing, PolicyGuard 100% branch / 96% line coverage.
+- [x] Deployed + verified on HSK testnet (chainId 133): PolicyGuard `0x3334e3Db8577e184889deAc085d4E55923EcA906`, CovenantAccountFactory `0xBA055ae34805985089fab405E0f12525684DF1D3`, AgentBond `0x5B38f7f8D7157300A274f591160E3405Ada7fB80`. See `contracts/deployments/hsk-testnet.json`.
+- [x] ABIs + addresses exported to `packages/sdk` (`gen:abis` generator from Foundry artifacts).
 
 **Phase 3 — SDK + AI**
 - [ ] Policy zod schema + viem bindings in `packages/sdk`.

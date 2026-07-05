@@ -1,4 +1,4 @@
-import type { ElementType, HTMLAttributes, ReactNode } from "react"
+import type { HTMLAttributes, ReactNode } from "react"
 import styles from "./Layout.module.css"
 
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
@@ -66,7 +66,7 @@ export function Grid({ min = "16rem", gap = 5, className, children, style, ...re
 interface PageHeaderProps {
   kicker?: ReactNode
   title: ReactNode
-  titleAs?: ElementType
+  titleAs?: "h1" | "h2" | "h3"
   description?: ReactNode
   actions?: ReactNode
 }

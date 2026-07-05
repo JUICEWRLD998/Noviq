@@ -12,11 +12,18 @@ import { z } from "zod"
 
 const chainId = z.coerce.number().int().positive()
 
+const privateKey = z.string().regex(/^0x[0-9a-fA-F]{64}$/, "must be a 0x-prefixed 32-byte hex key")
+
 const serverSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   HSK_RPC_URL: z.string().url(),
   OPENROUTER_API_KEY: z.string().min(1).optional(),
   DATABASE_URL: z.string().url().optional(),
+  // Direct (non-pooled) Neon endpoint for drizzle-kit DDL.
+  DATABASE_URL_UNPOOLED: z.string().url().optional(),
+  // Scoped agent session key held by the relayer (worker + attack console).
+  AGENT_PRIVATE_KEY: privateKey.optional(),
+  AGENT_ADDRESS: z.string().regex(/^0x[0-9a-fA-F]{40}$/).optional(),
 })
 
 const clientSchema = z.object({
@@ -43,6 +50,22 @@ export function serverEnv(): ServerEnv {
   }
   cachedServer = parsed.data
   return cachedServer
+}
+
+/**
+ * Assert that the given optional server-env keys are actually set, returning a
+ * narrowed record with those keys required. Use in the worker/indexer/scripts,
+ * which need secrets the lazy schema treats as optional for the web app.
+ */
+export function requireServer<K extends keyof ServerEnv>(
+  keys: readonly K[],
+): { [P in K]-?: NonNullable<ServerEnv[P]> } {
+  const env = serverEnv()
+  const missing = keys.filter((k) => env[k] === undefined || env[k] === "")
+  if (missing.length > 0) {
+    throw new Error(`Missing required environment: ${missing.join(", ")}`)
+  }
+  return env as { [P in K]-?: NonNullable<ServerEnv[P]> }
 }
 
 export function clientEnv(): ClientEnv {

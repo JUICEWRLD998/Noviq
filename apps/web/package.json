@@ -7,19 +7,27 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "indexer": "node --env-file=../../.env --import tsx src/server/indexer.ts",
+    "worker": "node --env-file=../../.env --import tsx src/server/worker.ts",
+    "bootstrap-account": "node --env-file=../../.env --env-file=../../contracts/.env --import tsx src/server/bootstrap-account.ts"
   },
   "dependencies": {
+    "@noviq/ai": "workspace:*",
+    "@noviq/db": "workspace:*",
     "@noviq/design-tokens": "workspace:*",
     "@noviq/env": "workspace:*",
+    "@noviq/sdk": "workspace:*",
     "next": "16.2.10",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "viem": "2.22.8"
   },
   "devDependencies": {
     "@types/node": "22.10.5",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
+    "tsx": "4.19.2",
     "typescript": "5.7.3"
   }
 }

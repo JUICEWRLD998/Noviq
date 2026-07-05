@@ -1,15 +1,25 @@
+import "@noviq/design-tokens/globals.css"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
-import "./globals.css"
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Three font roles, exposed as the CSS vars tokens.css expects.
+const display = Space_Grotesk({
+  variable: "--font-display-src",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
 })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sans = Geist({
+  variable: "--font-sans-src",
   subsets: ["latin"],
+  display: "swap",
+})
+
+const mono = Geist_Mono({
+  variable: "--font-mono-src",
+  subsets: ["latin"],
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -23,7 +33,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
       <body>{children}</body>
     </html>
   )

@@ -2,7 +2,7 @@ import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
   // Workspace packages ship raw TypeScript; let Next compile them.
-  transpilePackages: ["@noviq/env", "@noviq/sdk"],
+  transpilePackages: ["@noviq/env", "@noviq/sdk", "@noviq/design-tokens"],
 }
 
 export default nextConfig

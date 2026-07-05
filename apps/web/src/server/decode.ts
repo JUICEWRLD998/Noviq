@@ -30,14 +30,18 @@ export function decodeExecuteRevert(err: unknown): RevertInfo {
   let args = revert.data?.args as readonly unknown[] | undefined
 
   // viem only auto-decodes errors present in the ABI it was called with; if the
-  // account-ABI call couldn't name PolicyViolation, decode the raw bytes.
-  if (!name && revert.raw) {
-    try {
-      const decoded = decodeErrorResult({ abi: errorAbi, data: revert.raw as Hex })
-      name = decoded.errorName
-      args = decoded.args as readonly unknown[] | undefined
-    } catch {
-      // fall through to UNKNOWN
+  // account-ABI call couldn't name PolicyViolation, decode the raw revert bytes
+  // (found by walking the error's cause chain) against the guard ABI.
+  if (!name) {
+    const raw = findRawData(err)
+    if (raw) {
+      try {
+        const decoded = decodeErrorResult({ abi: errorAbi, data: raw })
+        name = decoded.errorName
+        args = decoded.args as readonly unknown[] | undefined
+      } catch {
+        // fall through to UNKNOWN
+      }
     }
   }
 
@@ -47,4 +51,17 @@ export function decodeExecuteRevert(err: unknown): RevertInfo {
   }
   if (name) return { reasonCode: -1, reasonLabel: name, errorName: name }
   return UNKNOWN
+}
+
+/** Walk an error's `cause` chain for the first `data` field holding revert bytes. */
+function findRawData(err: unknown): Hex | undefined {
+  let cur: unknown = err
+  const seen = new Set<unknown>()
+  while (cur && typeof cur === "object" && !seen.has(cur)) {
+    seen.add(cur)
+    const rec = cur as { data?: unknown; cause?: unknown }
+    if (typeof rec.data === "string" && rec.data.startsWith("0x")) return rec.data as Hex
+    cur = rec.cause
+  }
+  return undefined
 }

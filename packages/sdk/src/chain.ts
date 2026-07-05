@@ -2,18 +2,10 @@
 // Single source of chain facts is `@noviq/env`; this wraps it for viem.
 
 import { HSK_TESTNET } from "@noviq/env"
-import {
-  http,
-  type Account,
-  type Chain,
-  type PublicClient,
-  type WalletClient,
-  createPublicClient,
-  createWalletClient,
-} from "viem"
+import { type Account, createPublicClient, createWalletClient, defineChain, http } from "viem"
 
-/** HSK Chain testnet as a viem {@link Chain}. */
-export const hskTestnet: Chain = {
+/** HSK Chain testnet as a viem chain (concrete type for downstream inference). */
+export const hskTestnet = defineChain({
   id: HSK_TESTNET.chainId,
   name: HSK_TESTNET.name,
   nativeCurrency: { ...HSK_TESTNET.nativeCurrency },
@@ -24,10 +16,10 @@ export const hskTestnet: Chain = {
     default: { name: "HSK Testnet Explorer", url: HSK_TESTNET.explorerUrl },
   },
   testnet: true,
-}
+})
 
 /** Read-only client against HSK testnet. Pass `rpcUrl` to override the default. */
-export function createHskPublicClient(rpcUrl?: string): PublicClient {
+export function createHskPublicClient(rpcUrl?: string) {
   return createPublicClient({ chain: hskTestnet, transport: http(rpcUrl) })
 }
 
@@ -35,7 +27,7 @@ export function createHskPublicClient(rpcUrl?: string): PublicClient {
 export function createHskWalletClient(params: {
   account: Account | `0x${string}`
   rpcUrl?: string
-}): WalletClient {
+}) {
   return createWalletClient({
     account: params.account,
     chain: hskTestnet,

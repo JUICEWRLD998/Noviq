@@ -26,10 +26,9 @@ import {
   createHskPublicClient,
   createHskWalletClient,
   encodePolicy,
-  hskTestnet,
   noviqAddresses,
 } from "@noviq/sdk"
-import { type Address, type Hex, formatEther, parseEther } from "viem"
+import { type Address, type Hex, encodeFunctionData, formatEther, parseEther } from "viem"
 import { privateKeyToAccount } from "viem/accounts"
 
 const EXPLORER = HSK_TESTNET.explorerUrl
@@ -97,16 +96,16 @@ async function main() {
   await publicClient.waitForTransactionReceipt({ hash: fundTx })
   console.log(`Funded account: ${formatEther(ACCOUNT_FUNDING)} HSK`)
 
-  // 4. Owner sets the covenant (forwarded to the guard).
+  // 4. Owner sets the covenant (forwarded to the guard). Encode the calldata
+  //    directly — viem's writeContract arg inference chokes on setPolicy's five
+  //    struct/array params, and encodeFunctionData is the reliable path.
   const encoded = encodePolicy(demoPolicy)
-  const setTx = await ownerWallet.writeContract({
-    address: accountAddress,
+  const setData = encodeFunctionData({
     abi: covenantAccountAbi,
     functionName: "setPolicy",
     args: [encoded.config, encoded.limits, encoded.recipients, encoded.selectors, encoded.targets],
-    account: owner,
-    chain: hskTestnet,
   })
+  const setTx = await ownerWallet.sendTransaction({ to: accountAddress, data: setData })
   await publicClient.waitForTransactionReceipt({ hash: setTx })
   console.log(`setPolicy tx: ${EXPLORER}/tx/${setTx}`)
 

@@ -65,7 +65,7 @@ export function requireServer<K extends keyof ServerEnv>(
   if (missing.length > 0) {
     throw new Error(`Missing required environment: ${missing.join(", ")}`)
   }
-  return env as { [P in K]-?: NonNullable<ServerEnv[P]> }
+  return env as unknown as { [P in K]-?: NonNullable<ServerEnv[P]> }
 }
 
 export function clientEnv(): ClientEnv {

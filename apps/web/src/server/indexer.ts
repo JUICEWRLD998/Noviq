@@ -24,8 +24,16 @@ import {
   noviqAddresses,
   policyGuardAbi,
 } from "@noviq/sdk"
-import type { Abi, Address } from "viem"
+import type { Abi, Address, Hex } from "viem"
 import { publicClient } from "./chain"
+
+/** Minimal decoded-log shape we read off getContractEvents results. */
+type RawEventLog<A> = {
+  args: A
+  transactionHash: Hex | null
+  blockNumber: bigint | null
+  logIndex: number | null
+}
 
 const CURSOR_KEY = "hsk-testnet"
 const CONFIRMATIONS = 3n
@@ -41,7 +49,7 @@ async function getEventsSafe(
   params: { address: Address; abi: Abi; eventName: string },
   fromBlock: bigint,
   toBlock: bigint,
-): Promise<Awaited<ReturnType<typeof publicClient.getContractEvents>>> {
+): Promise<readonly unknown[]> {
   try {
     return await publicClient.getContractEvents({
       address: params.address,
@@ -66,8 +74,9 @@ async function ingestRange(fromBlock: bigint, toBlock: bigint): Promise<void> {
     fromBlock,
     toBlock,
   )
-  for (const log of created) {
-    const args = log.args as { account?: Address; owner?: Address; agent?: Address }
+  for (const raw of created) {
+    const log = raw as RawEventLog<{ account?: Address; owner?: Address; agent?: Address }>
+    const args = log.args
     if (!args.account || !args.owner || !args.agent) continue
     await upsertAccount({
       address: args.account,
@@ -86,8 +95,14 @@ async function ingestRange(fromBlock: bigint, toBlock: bigint): Promise<void> {
     fromBlock,
     toBlock,
   )
-  for (const log of allowed) {
-    const args = log.args as { account?: Address; asset?: Address; recipient?: Address; amount?: bigint }
+  for (const raw of allowed) {
+    const log = raw as RawEventLog<{
+      account?: Address
+      asset?: Address
+      recipient?: Address
+      amount?: bigint
+    }>
+    const args = log.args
     if (!args.account || !log.transactionHash || log.blockNumber == null) continue
     const account = await getAccountByAddress(args.account)
     if (!account) continue
@@ -116,8 +131,9 @@ async function ingestRange(fromBlock: bigint, toBlock: bigint): Promise<void> {
       fromBlock,
       toBlock,
     )
-    for (const log of logs) {
-      const args = log.args as { account?: Address; agent?: Address; amount?: bigint }
+    for (const raw of logs) {
+      const log = raw as RawEventLog<{ account?: Address; agent?: Address; amount?: bigint }>
+      const args = log.args
       const account = args.account ? await getAccountByAddress(args.account) : undefined
       await insertBondFromEvent({
         status: be.status,

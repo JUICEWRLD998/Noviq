@@ -69,7 +69,9 @@ export class OpenRouterClient {
   private key(): string {
     const key = this.explicitKey ?? process.env.OPENROUTER_API_KEY
     if (!key) {
-      throw new OpenRouterError("Missing OPENROUTER_API_KEY (set it in the environment or pass apiKey)")
+      throw new OpenRouterError(
+        "Missing OPENROUTER_API_KEY (set it in the environment or pass apiKey)",
+      )
     }
     return key
   }
@@ -94,7 +96,9 @@ export class OpenRouterClient {
       if (parsed.ok) {
         const result = schema.safeParse(parsed.value)
         if (result.success) return result.data
-        lastError = result.error.issues.map((i) => `${i.path.join(".") || "(root)"}: ${i.message}`).join("; ")
+        lastError = result.error.issues
+          .map((i) => `${i.path.join(".") || "(root)"}: ${i.message}`)
+          .join("; ")
       } else {
         lastError = parsed.error
       }
@@ -107,7 +111,9 @@ export class OpenRouterClient {
       })
     }
 
-    throw new OpenRouterError(`Structured output failed after ${maxRetries + 1} attempts: ${lastError}`)
+    throw new OpenRouterError(
+      `Structured output failed after ${maxRetries + 1} attempts: ${lastError}`,
+    )
   }
 
   private async request(params: CompleteParams, jsonMode: boolean): Promise<string> {
@@ -150,10 +156,15 @@ export class OpenRouterClient {
         await sleep(backoffMs(attempt))
         continue
       }
-      throw new OpenRouterError(`OpenRouter request failed (HTTP ${res.status}): ${text}`, res.status)
+      throw new OpenRouterError(
+        `OpenRouter request failed (HTTP ${res.status}): ${text}`,
+        res.status,
+      )
     }
 
-    throw new OpenRouterError(`OpenRouter request failed after ${maxRetries + 1} attempts: ${lastError}`)
+    throw new OpenRouterError(
+      `OpenRouter request failed after ${maxRetries + 1} attempts: ${lastError}`,
+    )
   }
 }
 
@@ -167,7 +178,10 @@ function backoffMs(attempt: number): number {
 
 /** Parse a model response as JSON, tolerating ```json fences the mode should prevent. */
 function tryParseJson(raw: string): { ok: true; value: unknown } | { ok: false; error: string } {
-  const cleaned = raw.replace(/^\s*```(?:json)?\s*/i, "").replace(/\s*```\s*$/i, "").trim()
+  const cleaned = raw
+    .replace(/^\s*```(?:json)?\s*/i, "")
+    .replace(/\s*```\s*$/i, "")
+    .trim()
   try {
     return { ok: true, value: JSON.parse(cleaned) }
   } catch (err) {

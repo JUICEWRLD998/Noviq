@@ -57,11 +57,9 @@ const addressSchema = z
   .refine((v): v is Address => isAddress(v), { message: "Invalid EVM address" })
 
 /** A 4-byte function selector, e.g. `0xa9059cbb`. */
-const selectorSchema = z
-  .string()
-  .refine((v): v is Hex => isHex(v) && v.length === 10, {
-    message: "Selector must be a 4-byte hex string (0x + 8 chars)",
-  })
+const selectorSchema = z.string().refine((v): v is Hex => isHex(v) && v.length === 10, {
+  message: "Selector must be a 4-byte hex string (0x + 8 chars)",
+})
 
 /** A non-negative decimal amount in human units, e.g. "100" or "0.5". */
 const decimalAmount = z

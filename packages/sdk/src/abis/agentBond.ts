@@ -1,274 +1,274 @@
 // AUTO-GENERATED from contracts/out/AgentBond.sol/AgentBond.json — do not edit by hand.
 export const agentBondAbi = [
   {
-    "type": "constructor",
-    "inputs": [
+    type: "constructor",
+    inputs: [
       {
-        "name": "withdrawDelay_",
-        "type": "uint64",
-        "internalType": "uint64"
-      }
+        name: "withdrawDelay_",
+        type: "uint64",
+        internalType: "uint64",
+      },
     ],
-    "stateMutability": "nonpayable"
+    stateMutability: "nonpayable",
   },
   {
-    "type": "function",
-    "name": "bond",
-    "inputs": [
+    type: "function",
+    name: "bond",
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: "account",
+        type: "address",
+        internalType: "address",
+      },
     ],
-    "outputs": [],
-    "stateMutability": "payable"
+    outputs: [],
+    stateMutability: "payable",
   },
   {
-    "type": "function",
-    "name": "bonds",
-    "inputs": [
+    type: "function",
+    name: "bonds",
+    inputs: [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
     ],
-    "outputs": [
+    outputs: [
       {
-        "name": "agent",
-        "type": "address",
-        "internalType": "address"
+        name: "agent",
+        type: "address",
+        internalType: "address",
       },
       {
-        "name": "amount",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: "amount",
+        type: "uint256",
+        internalType: "uint256",
       },
       {
-        "name": "unlockAt",
-        "type": "uint64",
-        "internalType": "uint64"
+        name: "unlockAt",
+        type: "uint64",
+        internalType: "uint64",
       },
       {
-        "name": "withdrawRequested",
-        "type": "bool",
-        "internalType": "bool"
-      }
+        name: "withdrawRequested",
+        type: "bool",
+        internalType: "bool",
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: "view",
   },
   {
-    "type": "function",
-    "name": "requestWithdraw",
-    "inputs": [
+    type: "function",
+    name: "requestWithdraw",
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: "account",
+        type: "address",
+        internalType: "address",
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: "nonpayable",
   },
   {
-    "type": "function",
-    "name": "slash",
-    "inputs": [
+    type: "function",
+    name: "slash",
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "internalType": "address"
+        name: "account",
+        type: "address",
+        internalType: "address",
       },
       {
-        "name": "amount",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: "amount",
+        type: "uint256",
+        internalType: "uint256",
       },
       {
-        "name": "reason",
-        "type": "string",
-        "internalType": "string"
-      }
+        name: "reason",
+        type: "string",
+        internalType: "string",
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: "nonpayable",
   },
   {
-    "type": "function",
-    "name": "withdraw",
-    "inputs": [
+    type: "function",
+    name: "withdraw",
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: "account",
+        type: "address",
+        internalType: "address",
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: "nonpayable",
   },
   {
-    "type": "function",
-    "name": "withdrawDelay",
-    "inputs": [],
-    "outputs": [
+    type: "function",
+    name: "withdrawDelay",
+    inputs: [],
+    outputs: [
       {
-        "name": "",
-        "type": "uint64",
-        "internalType": "uint64"
-      }
+        name: "",
+        type: "uint64",
+        internalType: "uint64",
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: "view",
   },
   {
-    "type": "event",
-    "name": "Bonded",
-    "inputs": [
+    type: "event",
+    name: "Bonded",
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: "account",
+        type: "address",
+        indexed: true,
+        internalType: "address",
       },
       {
-        "name": "agent",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: "agent",
+        type: "address",
+        indexed: true,
+        internalType: "address",
       },
       {
-        "name": "amount",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
       },
       {
-        "name": "total",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      }
+        name: "total",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "Slashed",
-    "inputs": [
+    type: "event",
+    name: "Slashed",
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: "account",
+        type: "address",
+        indexed: true,
+        internalType: "address",
       },
       {
-        "name": "by",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: "by",
+        type: "address",
+        indexed: true,
+        internalType: "address",
       },
       {
-        "name": "amount",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
       },
       {
-        "name": "reason",
-        "type": "string",
-        "indexed": false,
-        "internalType": "string"
-      }
+        name: "reason",
+        type: "string",
+        indexed: false,
+        internalType: "string",
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "WithdrawRequested",
-    "inputs": [
+    type: "event",
+    name: "WithdrawRequested",
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: "account",
+        type: "address",
+        indexed: true,
+        internalType: "address",
       },
       {
-        "name": "unlockAt",
-        "type": "uint64",
-        "indexed": false,
-        "internalType": "uint64"
-      }
+        name: "unlockAt",
+        type: "uint64",
+        indexed: false,
+        internalType: "uint64",
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "Withdrawn",
-    "inputs": [
+    type: "event",
+    name: "Withdrawn",
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: "account",
+        type: "address",
+        indexed: true,
+        internalType: "address",
       },
       {
-        "name": "to",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: "to",
+        type: "address",
+        indexed: true,
+        internalType: "address",
       },
       {
-        "name": "amount",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      }
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "error",
-    "name": "AmountExceedsBond",
-    "inputs": []
+    type: "error",
+    name: "AmountExceedsBond",
+    inputs: [],
   },
   {
-    "type": "error",
-    "name": "NotAccountOwner",
-    "inputs": []
+    type: "error",
+    name: "NotAccountOwner",
+    inputs: [],
   },
   {
-    "type": "error",
-    "name": "NotBondedAgent",
-    "inputs": []
+    type: "error",
+    name: "NotBondedAgent",
+    inputs: [],
   },
   {
-    "type": "error",
-    "name": "NothingBonded",
-    "inputs": []
+    type: "error",
+    name: "NothingBonded",
+    inputs: [],
   },
   {
-    "type": "error",
-    "name": "ReentrancyGuardReentrantCall",
-    "inputs": []
+    type: "error",
+    name: "ReentrancyGuardReentrantCall",
+    inputs: [],
   },
   {
-    "type": "error",
-    "name": "StillLocked",
-    "inputs": []
+    type: "error",
+    name: "StillLocked",
+    inputs: [],
   },
   {
-    "type": "error",
-    "name": "TransferFailed",
-    "inputs": []
+    type: "error",
+    name: "TransferFailed",
+    inputs: [],
   },
   {
-    "type": "error",
-    "name": "WithdrawNotRequested",
-    "inputs": []
+    type: "error",
+    name: "WithdrawNotRequested",
+    inputs: [],
   },
   {
-    "type": "error",
-    "name": "ZeroAmount",
-    "inputs": []
-  }
+    type: "error",
+    name: "ZeroAmount",
+    inputs: [],
+  },
 ] as const

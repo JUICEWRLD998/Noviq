@@ -66,7 +66,10 @@ export async function auditActions(
     schema: AuditSchema,
     messages: [
       { role: "system", content: SYSTEM_PROMPT },
-      { role: "user", content: `Guard decisions (chronological):\n${JSON.stringify(events, null, 2)}` },
+      {
+        role: "user",
+        content: `Guard decisions (chronological):\n${JSON.stringify(events, null, 2)}`,
+      },
     ],
   })
 }

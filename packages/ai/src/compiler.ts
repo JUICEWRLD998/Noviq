@@ -5,7 +5,7 @@
 // clause the model can't resolve confidently is returned as a `clarification`
 // for the human to answer before the policy is set on-chain.
 
-import { PolicySchema, type PolicyInput } from "@noviq/sdk"
+import { type PolicyInput, PolicySchema } from "@noviq/sdk"
 import { z } from "zod"
 import { MODELS } from "./models"
 import { OpenRouterClient } from "./openrouter"

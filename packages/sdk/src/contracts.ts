@@ -2,6 +2,7 @@
 // read helpers the app leans on before Phase 4 wires the full flow: `simulate`
 // (dry-run the guard) and `getConfig` (read a covenant back).
 
+import { HSK_TESTNET } from "@noviq/env"
 import {
   type Address,
   type Client,
@@ -10,7 +11,6 @@ import {
   type PublicClient,
   getContract,
 } from "viem"
-import { HSK_TESTNET } from "@noviq/env"
 import { agentBondAbi, covenantAccountAbi, covenantAccountFactoryAbi, policyGuardAbi } from "./abis"
 import { noviqAddresses } from "./addresses"
 import { type ReasonCode, reasonLabel } from "./policy"

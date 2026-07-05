@@ -1,127 +1,127 @@
 // AUTO-GENERATED from contracts/out/CovenantAccountFactory.sol/CovenantAccountFactory.json — do not edit by hand.
 export const covenantAccountFactoryAbi = [
   {
-    "type": "constructor",
-    "inputs": [
+    type: "constructor",
+    inputs: [
       {
-        "name": "guard_",
-        "type": "address",
-        "internalType": "contract IPolicyGuard"
-      }
+        name: "guard_",
+        type: "address",
+        internalType: "contract IPolicyGuard",
+      },
     ],
-    "stateMutability": "nonpayable"
+    stateMutability: "nonpayable",
   },
   {
-    "type": "function",
-    "name": "accountsCount",
-    "inputs": [],
-    "outputs": [
+    type: "function",
+    name: "accountsCount",
+    inputs: [],
+    outputs: [
       {
-        "name": "",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: "view",
   },
   {
-    "type": "function",
-    "name": "accountsOf",
-    "inputs": [
+    type: "function",
+    name: "accountsOf",
+    inputs: [
       {
-        "name": "owner_",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: "owner_",
+        type: "address",
+        internalType: "address",
+      },
     ],
-    "outputs": [
+    outputs: [
       {
-        "name": "",
-        "type": "address[]",
-        "internalType": "address[]"
-      }
+        name: "",
+        type: "address[]",
+        internalType: "address[]",
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: "view",
   },
   {
-    "type": "function",
-    "name": "allAccounts",
-    "inputs": [
+    type: "function",
+    name: "allAccounts",
+    inputs: [
       {
-        "name": "",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
-    "outputs": [
+    outputs: [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: "view",
   },
   {
-    "type": "function",
-    "name": "createAccount",
-    "inputs": [
+    type: "function",
+    name: "createAccount",
+    inputs: [
       {
-        "name": "owner_",
-        "type": "address",
-        "internalType": "address"
+        name: "owner_",
+        type: "address",
+        internalType: "address",
       },
       {
-        "name": "agent_",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: "agent_",
+        type: "address",
+        internalType: "address",
+      },
     ],
-    "outputs": [
+    outputs: [
       {
-        "name": "acct",
-        "type": "address",
-        "internalType": "contract CovenantAccount"
-      }
+        name: "acct",
+        type: "address",
+        internalType: "contract CovenantAccount",
+      },
     ],
-    "stateMutability": "nonpayable"
+    stateMutability: "nonpayable",
   },
   {
-    "type": "function",
-    "name": "guard",
-    "inputs": [],
-    "outputs": [
+    type: "function",
+    name: "guard",
+    inputs: [],
+    outputs: [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "contract IPolicyGuard"
-      }
+        name: "",
+        type: "address",
+        internalType: "contract IPolicyGuard",
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: "view",
   },
   {
-    "type": "event",
-    "name": "AccountCreated",
-    "inputs": [
+    type: "event",
+    name: "AccountCreated",
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: "account",
+        type: "address",
+        indexed: true,
+        internalType: "address",
       },
       {
-        "name": "owner",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: "owner",
+        type: "address",
+        indexed: true,
+        internalType: "address",
       },
       {
-        "name": "agent",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
-      }
+        name: "agent",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
     ],
-    "anonymous": false
-  }
+    anonymous: false,
+  },
 ] as const

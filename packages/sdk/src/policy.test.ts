@@ -1,12 +1,6 @@
 import { parseUnits } from "viem"
 import { describe, expect, it } from "vitest"
-import {
-  NATIVE_ASSET,
-  ReasonCode,
-  REASON_LABELS,
-  encodePolicy,
-  reasonLabel,
-} from "./policy"
+import { NATIVE_ASSET, REASON_LABELS, ReasonCode, encodePolicy, reasonLabel } from "./policy"
 
 const RECIPIENT_A = "0x1111111111111111111111111111111111111111"
 const RECIPIENT_B = "0x2222222222222222222222222222222222222222"

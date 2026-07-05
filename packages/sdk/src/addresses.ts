@@ -2,8 +2,8 @@
 // The factory + guard + bond are the shared singletons; individual CovenantAccounts
 // are deployed per user via the factory and discovered through its events/views.
 
-import type { Address } from "viem"
 import { HSK_TESTNET } from "@noviq/env"
+import type { Address } from "viem"
 
 export interface ProtocolAddresses {
   policyGuard: Address

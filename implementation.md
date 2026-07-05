@@ -139,9 +139,9 @@ Screens (all consuming semantic tokens; all with reduced-motion + `hover:none` f
 - [x] Deployed + verified on HSK testnet (chainId 133): PolicyGuard `0x3334e3Db8577e184889deAc085d4E55923EcA906`, CovenantAccountFactory `0xBA055ae34805985089fab405E0f12525684DF1D3`, AgentBond `0x5B38f7f8D7157300A274f591160E3405Ada7fB80`. See `contracts/deployments/hsk-testnet.json`.
 - [x] ABIs + addresses exported to `packages/sdk` (`gen:abis` generator from Foundry artifacts).
 
-**Phase 3 — SDK + AI**
-- [ ] Policy zod schema + viem bindings in `packages/sdk`.
-- [ ] OpenRouter/Gemini clients; Compiler, Agent (naive), Auditor in `packages/ai`.
+**Phase 3 — SDK + AI** ✅
+- [x] Policy zod schema + viem bindings in `packages/sdk`: `policy.ts` (`PolicySchema`, `encodePolicy` → exact `setPolicy` tuples via `parseUnits`, `ReasonCode`/`reasonLabel`), `chain.ts` (`hskTestnet` + public/wallet client factories), `contracts.ts` (typed `getContract` bindings + `simulateAction`/`readPolicyConfig`). Vitest: 10 passing.
+- [x] OpenRouter/Gemini clients in `packages/ai`: `openrouter.ts` (fetch-based, JSON-mode + zod-validated self-correction retry), `compiler.ts` (NL → validated policy + clarifications), `agent.ts` (intentionally naive/injectable), `auditor.ts` (guard events → compliance report). Live smoke test (`scripts/smoke.ts`) verified Compiler→SDK handoff end-to-end.
 
 **Phase 4 — Backend/Data**
 - [ ] Drizzle schema + migrations; indexer; agent worker; API/SSE routes.

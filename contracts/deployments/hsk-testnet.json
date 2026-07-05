@@ -4,6 +4,33 @@
   "rpcUrl": "https://testnet.hsk.xyz",
   "explorerUrl": "https://testnet-explorer.hsk.xyz",
   "contracts": {
+    "PolicyGuard": {
+      "address": "0x3334e3Db8577e184889deAc085d4E55923EcA906",
+      "deployTx": "0xf9d26fc105caa6ddd681d7859cabf9e7ab7eafff63ff7cf04d10df639a43f5c5",
+      "block": 30037652,
+      "deployer": "0x84848A21d1A30D5543719F3D1A0Da2F9232a4fAE",
+      "verified": true,
+      "constructorArgs": [],
+      "note": "On-chain covenant registry + enforcer. Permissionless; keyed by calling account."
+    },
+    "CovenantAccountFactory": {
+      "address": "0xBA055ae34805985089fab405E0f12525684DF1D3",
+      "deployTx": "0x003313698783ede02bc1ccbbe019f121afc113d502718114e4ca132e46993fd7",
+      "block": 30037670,
+      "deployer": "0x84848A21d1A30D5543719F3D1A0Da2F9232a4fAE",
+      "verified": true,
+      "constructorArgs": ["0x3334e3Db8577e184889deAc085d4E55923EcA906"],
+      "note": "Deploys CovenantAccounts wired to the shared PolicyGuard; indexes by owner."
+    },
+    "AgentBond": {
+      "address": "0x5B38f7f8D7157300A274f591160E3405Ada7fB80",
+      "deployTx": "0x1eeb7f9123c4bf6d4316c8c380f70a247f9845dd2ddabc1ab03f0c27dc41938e",
+      "block": 30037674,
+      "deployer": "0x84848A21d1A30D5543719F3D1A0Da2F9232a4fAE",
+      "verified": true,
+      "constructorArgs": [604800],
+      "note": "Agent stakes a native-HSK bond; owner slashes off-mandate behavior. withdrawDelay = 7 days (604800s)."
+    },
     "Hello": {
       "address": "0x09Ade87D05bfF239e4a28bA266c2D88585D736C4",
       "deployTx": "0x807b8fa066e54fdb0f45f58c61a542680edae4d088ef0d2b7316214971997d3c",

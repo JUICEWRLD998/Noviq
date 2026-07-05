@@ -1,0 +1,20 @@
+{
+  "name": "@noviq/design-tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Single source of truth for design + motion tokens (Phase 1).",
+  "exports": {
+    "./globals.css": "./src/globals.css",
+    "./tokens.css": "./src/tokens.css",
+    "./motion.css": "./src/motion.css",
+    "./patterns.module.css": "./src/patterns.module.css",
+    "./motion": "./src/motion.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3"
+  }
+}

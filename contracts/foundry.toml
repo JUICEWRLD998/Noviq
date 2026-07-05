@@ -1,0 +1,28 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+script = "script"
+solc = "0.8.28"
+optimizer = true
+optimizer_runs = 200
+evm_version = "cancun"
+bytecode_hash = "none"
+ffi = false
+fs_permissions = [{ access = "read", path = "./out" }]
+
+[profile.ci]
+verbosity = 4
+
+# HSK Chain testnet (chainId 133)
+[rpc_endpoints]
+hsk_testnet = "${HSK_RPC_URL}"
+
+# HSK explorer is Blockscout-based. Verification uses the Blockscout verifier;
+# no API key is required, but foundry expects a placeholder entry.
+[etherscan]
+hsk_testnet = { key = "${HSK_EXPLORER_API_KEY}", url = "https://explorer.hsk.xyz/api", chain = 133 }
+
+# See more config options:
+# https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

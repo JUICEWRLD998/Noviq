@@ -19,10 +19,11 @@ verbosity = 4
 [rpc_endpoints]
 hsk_testnet = "${HSK_RPC_URL}"
 
-# HSK explorer is Blockscout-based. Verification uses the Blockscout verifier;
-# no API key is required, but foundry expects a placeholder entry.
+# HSK explorer is Blockscout-based. Note: explorer.hsk.xyz is MAINNET; the
+# testnet Blockscout lives at testnet-explorer.hsk.xyz. No API key required,
+# but foundry expects a placeholder entry.
 [etherscan]
-hsk_testnet = { key = "${HSK_EXPLORER_API_KEY}", url = "https://explorer.hsk.xyz/api", chain = 133 }
+hsk_testnet = { key = "${HSK_EXPLORER_API_KEY}", url = "https://testnet-explorer.hsk.xyz/api", chain = 133 }
 
 # See more config options:
 # https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

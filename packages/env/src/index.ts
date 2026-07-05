@@ -66,6 +66,7 @@ export const HSK_TESTNET = {
   chainId: 133,
   name: "HSK Chain Testnet",
   rpcUrl: "https://testnet.hsk.xyz",
-  explorerUrl: "https://explorer.hsk.xyz",
+  // NOTE: explorer.hsk.xyz is MAINNET; the testnet Blockscout is testnet-explorer.hsk.xyz.
+  explorerUrl: "https://testnet-explorer.hsk.xyz",
   nativeCurrency: { name: "HSK", symbol: "HSK", decimals: 18 },
 } as const

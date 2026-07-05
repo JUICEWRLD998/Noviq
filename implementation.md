@@ -143,8 +143,11 @@ Screens (all consuming semantic tokens; all with reduced-motion + `hover:none` f
 - [x] Policy zod schema + viem bindings in `packages/sdk`: `policy.ts` (`PolicySchema`, `encodePolicy` → exact `setPolicy` tuples via `parseUnits`, `ReasonCode`/`reasonLabel`), `chain.ts` (`hskTestnet` + public/wallet client factories), `contracts.ts` (typed `getContract` bindings + `simulateAction`/`readPolicyConfig`). Vitest: 10 passing.
 - [x] OpenRouter/Gemini clients in `packages/ai`: `openrouter.ts` (fetch-based, JSON-mode + zod-validated self-correction retry), `compiler.ts` (NL → validated policy + clarifications), `agent.ts` (intentionally naive/injectable), `auditor.ts` (guard events → compliance report). Live smoke test (`scripts/smoke.ts`) verified Compiler→SDK handoff end-to-end.
 
-**Phase 4 — Backend/Data**
-- [ ] Drizzle schema + migrations; indexer; agent worker; API/SSE routes.
+**Phase 4 — Backend/Data** ✅
+- [x] `@noviq/db`: Drizzle schema (users, covenant_accounts, versioned policies, agents, actions, audit_notes, bonds, indexer_state) with wei-as-`text`/block-as-`bigint` conventions and idempotent `tx_hash` upsert key; `queries.ts` helpers; globally-cached postgres-js client (`prepare:false` for Neon pooler). Migration `drizzle/0000_nosy_eternity.sql` generated; all 8 tables live on Neon.
+- [x] Indexer (`server/indexer.ts`): resumable, idempotent poller (persisted cursor, adaptive range-halving) ingesting `AccountCreated` / `ActionAllowed` / bond lifecycle logs.
+- [x] Agent worker (`server/worker.ts`): autonomous loop → Gemini proposal → session-key `execute` → guard verdict recorded; per-agent errors isolated.
+- [x] API/SSE routes: compile, covenants list/get/create, per-account actions, `policy/prepare`, attack-console injection, and auditor narration **SSE** stream (`covenants/[address]/audit`). Full workspace typecheck green.
 
 **Phase 5 — Frontend**
 - [ ] Landing, onboarding, covenant editor, dashboard, attack console, audit log, styleguide — all in CSS Modules + tokens + shared motion.

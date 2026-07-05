@@ -1,0 +1,36 @@
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font-size: var(--fs-step--1);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+.value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--fs-step-3);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.unit {
+  font-family: var(--font-sans);
+  font-size: var(--fs-step-0);
+  font-weight: var(--weight-regular);
+  color: var(--text-muted);
+}
+
+.hint {
+  font-size: var(--fs-step--1);
+  color: var(--text-faint);
+}

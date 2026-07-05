@@ -1,6 +1,7 @@
 import patterns from "@noviq/design-tokens/patterns.module.css"
 import type { Metadata } from "next"
 import type { CSSProperties } from "react"
+import { ComponentsShowcase } from "./ComponentsShowcase"
 import { ThemeToggle } from "./ThemeToggle"
 import styles from "./styleguide.module.css"
 
@@ -302,6 +303,14 @@ export default function Styleguide() {
   "allowlist": ["0x84848…4fAE"]
 }`}</code>
           </pre>
+        </Section>
+
+        <Section
+          id="component-library"
+          title="Component library"
+          note="The reusable kit consumed by every screen — live, not token swatches."
+        >
+          <ComponentsShowcase />
         </Section>
       </main>
     </div>

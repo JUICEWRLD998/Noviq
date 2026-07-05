@@ -1,0 +1,53 @@
+.badge {
+  --_fg: var(--text-secondary);
+  --_bg: var(--surface-3);
+  --_dot: var(--text-muted);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.25rem var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-step--1);
+  font-weight: var(--weight-medium);
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--_fg);
+  background: var(--_bg);
+  border: 1px solid transparent;
+  border-radius: var(--badge-radius);
+}
+
+.dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: var(--radius-full);
+  background: var(--_dot);
+  flex: none;
+}
+
+.neutral {
+  --_fg: var(--text-secondary);
+  --_bg: var(--surface-3);
+  --_dot: var(--text-muted);
+}
+.accent {
+  --_fg: var(--violet-200);
+  --_bg: var(--accent-muted);
+  --_dot: var(--accent);
+}
+.success {
+  --_fg: var(--green-300);
+  --_bg: var(--success-muted);
+  --_dot: var(--success);
+}
+.danger {
+  --_fg: var(--red-300);
+  --_bg: var(--danger-muted);
+  --_dot: var(--danger);
+}
+.warning {
+  --_fg: var(--amber-400);
+  --_bg: var(--warning-muted);
+  --_dot: var(--warning);
+}

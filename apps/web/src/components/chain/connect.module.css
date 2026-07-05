@@ -1,0 +1,46 @@
+.connected {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+  flex: none;
+}
+
+.addr {
+  font-family: var(--font-mono);
+  font-size: var(--fs-step--1);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.disconnect {
+  padding: 0.2rem var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-step--1);
+  color: var(--text-muted);
+  background: var(--surface-3);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: color var(--dur-2) var(--ease-out-quart);
+}
+
+.disconnect:hover {
+  color: var(--text-primary);
+}
+
+.disconnect:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

@@ -2,19 +2,32 @@
 // read helpers the app leans on before Phase 4 wires the full flow: `simulate`
 // (dry-run the guard) and `getConfig` (read a covenant back).
 
-import { type Address, type Client, type Hex, type PublicClient, getContract } from "viem"
+import {
+  type Address,
+  type Client,
+  type GetContractReturnType,
+  type Hex,
+  type PublicClient,
+  getContract,
+} from "viem"
 import { HSK_TESTNET } from "@noviq/env"
 import { agentBondAbi, covenantAccountAbi, covenantAccountFactoryAbi, policyGuardAbi } from "./abis"
 import { noviqAddresses } from "./addresses"
 import { type ReasonCode, reasonLabel } from "./policy"
 
 /** The shared PolicyGuard singleton, bound to `client`. */
-export function getPolicyGuard<C extends Client>(client: C, chainId = HSK_TESTNET.chainId) {
+export function getPolicyGuard<C extends Client>(
+  client: C,
+  chainId = HSK_TESTNET.chainId,
+): GetContractReturnType<typeof policyGuardAbi, C, Address> {
   return getContract({ address: noviqAddresses(chainId).policyGuard, abi: policyGuardAbi, client })
 }
 
 /** The CovenantAccountFactory singleton, bound to `client`. */
-export function getAccountFactory<C extends Client>(client: C, chainId = HSK_TESTNET.chainId) {
+export function getAccountFactory<C extends Client>(
+  client: C,
+  chainId = HSK_TESTNET.chainId,
+): GetContractReturnType<typeof covenantAccountFactoryAbi, C, Address> {
   return getContract({
     address: noviqAddresses(chainId).covenantAccountFactory,
     abi: covenantAccountFactoryAbi,
@@ -23,12 +36,18 @@ export function getAccountFactory<C extends Client>(client: C, chainId = HSK_TES
 }
 
 /** The AgentBond singleton, bound to `client`. */
-export function getAgentBond<C extends Client>(client: C, chainId = HSK_TESTNET.chainId) {
+export function getAgentBond<C extends Client>(
+  client: C,
+  chainId = HSK_TESTNET.chainId,
+): GetContractReturnType<typeof agentBondAbi, C, Address> {
   return getContract({ address: noviqAddresses(chainId).agentBond, abi: agentBondAbi, client })
 }
 
 /** A specific per-user CovenantAccount at `address`, bound to `client`. */
-export function getCovenantAccount<C extends Client>(address: Address, client: C) {
+export function getCovenantAccount<C extends Client>(
+  address: Address,
+  client: C,
+): GetContractReturnType<typeof covenantAccountAbi, C, Address> {
   return getContract({ address, abi: covenantAccountAbi, client })
 }
 

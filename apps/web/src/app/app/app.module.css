@@ -1,0 +1,12 @@
+.shell {
+  min-height: 100svh;
+  background: var(--surface-0);
+  color: var(--text-primary);
+}
+
+.main {
+  max-width: 84rem;
+  margin-inline: auto;
+  padding: clamp(var(--space-6), 5vw, var(--space-8)) clamp(var(--space-4), 4vw, var(--space-7))
+    var(--space-9);
+}

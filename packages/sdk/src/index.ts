@@ -6,4 +6,7 @@ export { HSK_TESTNET } from "@noviq/env"
 export * from "./abis"
 export { NOVIQ_ADDRESSES, noviqAddresses, type ProtocolAddresses } from "./addresses"
 
-// Policy zod schema + viem contract helpers land here in Phase 3.
+// Phase-3: covenant policy schema/encoder, viem chain + contract bindings.
+export * from "./policy"
+export * from "./chain"
+export * from "./contracts"

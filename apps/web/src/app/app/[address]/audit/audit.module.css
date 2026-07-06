@@ -6,14 +6,29 @@
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-6);
+  align-items: center;
+  gap: var(--space-4) var(--space-6);
   margin-top: var(--space-6);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-3);
 }
 .filterGroup {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+}
+.search {
+  flex: 1 1 16rem;
+  min-width: 12rem;
+  margin-left: auto;
+}
+.count {
+  margin: 0 0 var(--space-4);
+  font-size: var(--fs-step--1);
+  color: var(--text-muted);
+}
+.count strong {
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
 }
 .filterLabel {
   font-size: var(--fs-step--1);
@@ -31,10 +46,8 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition:
-    color var(--dur-2) var(--ease-out-quart),
-    border-color var(--dur-2) var(--ease-out-quart),
-    background-color var(--dur-2) var(--ease-out-quart);
+  transition: color var(--dur-2) var(--ease-out-quart), border-color var(--dur-2)
+    var(--ease-out-quart), background-color var(--dur-2) var(--ease-out-quart);
 }
 .chip:hover {
   color: var(--text-secondary);
@@ -109,10 +122,28 @@
     display: none;
   }
   .row {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--space-2);
+    padding: var(--space-4) var(--space-5);
+  }
+  /* Surface the column name for each cell now that the header is hidden. */
+  .row > [data-label] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .row > [data-label]::before {
+    content: attr(data-label);
+    font-size: var(--fs-step--1);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--text-muted);
   }
   .num {
-    text-align: left;
+    text-align: right;
+  }
+  .search {
+    margin-left: 0;
   }
 }

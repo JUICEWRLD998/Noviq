@@ -109,6 +109,17 @@
   max-width: 12rem;
 }
 
+/* Stack the amount field and fund button on narrow screens. */
+@media (max-width: 480px) {
+  .fundRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .fundRow > label {
+    max-width: none;
+  }
+}
+
 .actions {
   display: flex;
   align-items: center;

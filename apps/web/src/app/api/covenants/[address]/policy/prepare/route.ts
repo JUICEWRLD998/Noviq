@@ -1,8 +1,8 @@
 import { compileCovenant } from "@noviq/ai"
 import { getAccountByAddress, insertPolicyVersion } from "@noviq/db"
 import { type PolicyInput, covenantAccountAbi, encodePolicy } from "@noviq/sdk"
-import { encodeFunctionData } from "viem"
 import { NextResponse } from "next/server"
+import { encodeFunctionData } from "viem"
 import { errMessage, jsonSafe } from "../../../../_lib"
 
 export const runtime = "nodejs"
@@ -19,9 +19,10 @@ export async function POST(req: Request, ctx: { params: Promise<{ address: strin
     const account = await getAccountByAddress(address)
     if (!account) return NextResponse.json({ error: "Account not found" }, { status: 404 })
 
-    const body = (await req.json().catch(() => null)) as
-      | { covenant?: string; policy?: PolicyInput }
-      | null
+    const body = (await req.json().catch(() => null)) as {
+      covenant?: string
+      policy?: PolicyInput
+    } | null
 
     let policy: PolicyInput
     let clarifications: string[] = []
@@ -34,24 +35,35 @@ export async function POST(req: Request, ctx: { params: Promise<{ address: strin
     } else if (body?.policy) {
       policy = body.policy
     } else {
-      return NextResponse.json({ error: "Body must include { covenant } or { policy }" }, { status: 400 })
+      return NextResponse.json(
+        { error: "Body must include { covenant } or { policy }" },
+        { status: 400 },
+      )
     }
 
     const encoded = encodePolicy(policy)
     const calldata = encodeFunctionData({
       abi: covenantAccountAbi,
       functionName: "setPolicy",
-      args: [encoded.config, encoded.limits, encoded.recipients, encoded.selectors, encoded.targets],
+      args: [
+        encoded.config,
+        encoded.limits,
+        encoded.recipients,
+        encoded.selectors,
+        encoded.targets,
+      ],
     })
 
-    await insertPolicyVersion({
+    const draft = await insertPolicyVersion({
       accountId: account.id,
       policyJson: policy as unknown as Record<string, unknown>,
       active: false,
       ...(sourceText !== undefined ? { sourceText } : {}),
     })
 
-    return NextResponse.json(jsonSafe({ policy, clarifications, to: address, calldata, encoded }))
+    return NextResponse.json(
+      jsonSafe({ policy, clarifications, to: address, calldata, encoded, version: draft?.version }),
+    )
   } catch (err) {
     return NextResponse.json({ error: errMessage(err) }, { status: 500 })
   }

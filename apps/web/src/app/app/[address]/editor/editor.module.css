@@ -1,0 +1,100 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-7);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.label {
+  font-size: var(--fs-step--1);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+}
+
+.error {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--fs-step-0);
+  color: var(--danger);
+  background: var(--danger-muted);
+  border-radius: var(--radius-sm);
+}
+
+.emptyPreview {
+  display: grid;
+  place-items: center;
+  min-height: 14rem;
+  padding: var(--space-6);
+  color: var(--text-faint);
+  font-size: var(--fs-step-0);
+  background: var(--surface-1);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.clarify {
+  padding: var(--space-4);
+  background: var(--warning-muted);
+  border: 1px solid color-mix(in oklch, var(--warning) 40%, transparent);
+  border-radius: var(--radius-md);
+}
+.clarifyTag {
+  display: block;
+  font-size: var(--fs-step--1);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--warning);
+  margin-bottom: var(--space-2);
+}
+.clarify ul {
+  margin: 0;
+  padding-left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.clarify li {
+  font-size: var(--fs-step-0);
+  color: var(--text-secondary);
+  line-height: var(--lh-normal);
+}
+
+.gate,
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+.gate p {
+  font-size: var(--fs-step-0);
+  color: var(--text-secondary);
+}
+.doneText {
+  font-size: var(--fs-step-1);
+  font-weight: var(--weight-semibold);
+  color: var(--success);
+}

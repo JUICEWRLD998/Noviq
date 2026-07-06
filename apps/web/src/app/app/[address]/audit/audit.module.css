@@ -1,0 +1,118 @@
+.exports {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-5);
+}
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.filterLabel {
+  font-size: var(--fs-step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-muted);
+  margin-right: var(--space-1);
+}
+.chip {
+  padding: 0.25rem var(--space-3);
+  font-size: var(--fs-step--1);
+  text-transform: capitalize;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    color var(--dur-2) var(--ease-out-quart),
+    border-color var(--dur-2) var(--ease-out-quart),
+    background-color var(--dur-2) var(--ease-out-quart);
+}
+.chip:hover {
+  color: var(--text-secondary);
+}
+.chip[data-active] {
+  color: var(--accent-contrast);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Table ────────────────────────────────────────────────────────────────── */
+.tableCard {
+  overflow: clip;
+}
+.tableHead,
+.row {
+  display: grid;
+  grid-template-columns: 8rem 6rem 1fr 8rem 12rem 8rem;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-3) var(--space-6);
+}
+.tableHead {
+  font-size: var(--fs-step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.row {
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: var(--fs-step-0);
+  color: var(--text-secondary);
+}
+.row:last-child {
+  border-bottom: none;
+}
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.time {
+  font-size: var(--fs-step--1);
+  color: var(--text-muted);
+}
+.result {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.tableBody {
+  max-height: 40rem;
+  overflow-y: auto;
+}
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+}
+.empty {
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* Collapse the grid to stacked cards on narrow screens. */
+@media (max-width: 820px) {
+  .tableHead {
+    display: none;
+  }
+  .row {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+  .num {
+    text-align: left;
+  }
+}

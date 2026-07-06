@@ -131,6 +131,19 @@ export async function getActivePolicy(accountId: string) {
   return row
 }
 
+/**
+ * Mark one policy version active (deactivating the rest) after the owner has
+ * set it on-chain. `setTx` records the on-chain setPolicy transaction.
+ */
+export async function activatePolicyVersion(accountId: string, version: number, setTx?: string) {
+  const db = getDb()
+  await db.update(policies).set({ active: false }).where(eq(policies.accountId, accountId))
+  await db
+    .update(policies)
+    .set({ active: true, ...(setTx !== undefined ? { setTx } : {}) })
+    .where(and(eq(policies.accountId, accountId), eq(policies.version, version)))
+}
+
 // ── Agents ────────────────────────────────────────────────────────────────────
 
 export async function getActiveAgents() {

@@ -33,9 +33,9 @@ import { privateKeyToAccount } from "viem/accounts"
 
 const EXPLORER = HSK_TESTNET.explorerUrl
 const PAYEE: Address = "0x1111111111111111111111111111111111111111" // allowlisted vendor
-const ACCOUNT_FUNDING = parseEther("0.5")
-const AGENT_GAS_FUNDING = parseEther("0.05")
-const AGENT_GAS_FLOOR = parseEther("0.02")
+const ACCOUNT_FUNDING = parseEther("0.12")
+const AGENT_GAS_FUNDING = parseEther("0.03")
+const AGENT_GAS_FLOOR = parseEther("0.01")
 
 /** The demo covenant: native HSK only, 1/tx, huge daily cap, single allowlisted payee. */
 const demoPolicy: PolicyInput = {

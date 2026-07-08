@@ -7,7 +7,7 @@ import styles from "./appbar.module.css"
 
 const LINKS = [
   { href: "/app", label: "Covenants" },
-  { href: "/styleguide", label: "Styleguide" },
+  // Styleguide is a design/dev reference — reachable at /styleguide, kept out of user nav.
 ]
 
 export function AppBar() {

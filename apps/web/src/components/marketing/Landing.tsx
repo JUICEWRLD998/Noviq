@@ -68,9 +68,6 @@ export function Landing() {
           <a href="#how" className={styles.navLink}>
             How it works
           </a>
-          <Link href="/styleguide" className={styles.navLink}>
-            Styleguide
-          </Link>
           <Link href="/app" className={buttonClassName("accent", "sm")}>
             Launch app
           </Link>

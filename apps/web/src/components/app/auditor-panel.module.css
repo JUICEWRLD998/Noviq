@@ -25,9 +25,10 @@
 .spinner {
   width: 1rem;
   height: 1rem;
-  border: 2px solid var(--accent);
-  border-top-color: transparent;
-  border-radius: var(--radius-full);
+  background-image: url('/icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   animation: auditSpin 0.7s linear infinite;
 }
 @keyframes auditSpin {

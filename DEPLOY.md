@@ -93,12 +93,13 @@ AGENT_ADDRESS=0xYourAgentWalletAddress
 ==> Build successful!
 ==> Starting service...
 [health-server] Listening on port 10000
-[health-server] Health check: http://localhost:10000/health
 [start-workers] Indexer starting...
 [start-workers] Worker starting...
-[indexer] Watching blockchain for events on HSK Chain (133)...
-[worker] Agent worker started, polling for tasks...
 ```
+
+**Note:** The start-workers script uses environment variables from Render's dashboard (not from a .env file).
+
+If you see `node: ../../.env: not found`, that's expected and already fixed in the latest code.
 
 ### Step 6: Note Your Render URL
 

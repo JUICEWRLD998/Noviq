@@ -30,6 +30,9 @@ const mono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Noviq — programmable trust for autonomous AI money",
   description: "Don't trust the agent. Trust the covenant.",
+  icons: {
+    icon: "/icon.svg",
+  },
 }
 
 export default function RootLayout({

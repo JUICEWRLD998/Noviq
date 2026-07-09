@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "indexer": "node --env-file=../../.env --import tsx src/server/indexer.ts",
     "worker": "node --env-file=../../.env --import tsx src/server/worker.ts",
+    "start-workers": "node --env-file=../../.env --import tsx src/server/start-workers.ts",
     "attack": "node --env-file=../../.env --import tsx src/server/run-attack.ts",
     "bootstrap-account": "node --env-file=../../.env --env-file=../../contracts/.env --import tsx src/server/bootstrap-account.ts"
   },

@@ -1,0 +1,35 @@
+services:
+  # Background Workers Service with Health Check
+  - type: web
+    name: noviq-workers
+    runtime: node
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: pnpm install --frozen-lockfile
+    startCommand: pnpm --filter @noviq/web start-workers
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.0
+      - key: PNPM_VERSION
+        value: 10.33.3
+      - key: HSK_RPC_URL
+        sync: false
+      - key: NEXT_PUBLIC_HSK_RPC_URL
+        sync: false
+      - key: NEXT_PUBLIC_HSK_EXPLORER_URL
+        sync: false
+      - key: NEXT_PUBLIC_HSK_CHAIN_ID
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_URL_UNPOOLED
+        sync: false
+      - key: AGENT_PRIVATE_KEY
+        sync: false
+      - key: AGENT_ADDRESS
+        sync: false
+    healthCheckPath: /
+    autoDeploy: true

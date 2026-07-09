@@ -170,14 +170,32 @@ Full deployment metadata: `contracts/deployments/hsk-testnet.json`.
 
 ---
 
+## 🚀 Deployment
+
+Deploy Noviq on **100% free infrastructure** using Render (workers) + Vercel (web app):
+
+**See [DEPLOY.md](./DEPLOY.md)** for complete step-by-step instructions including:
+- Render free tier setup with health check endpoint
+- Cron-job.org keep-alive configuration (prevents sleep)
+- Vercel deployment for the web app
+- Environment variable configuration
+- Troubleshooting and monitoring
+
+**Total cost: $0/month** (perfect for hackathons and demos!)
+
+---
+
 ## 📚 Documentation
 
 | Doc | For |
 |---|---|
+| [DEPLOY.md](./DEPLOY.md) | Complete deployment guide (Render + Vercel, 100% free) |
+| [USER-GUIDE.md](./USER-GUIDE.md) | User-facing guide: what Noviq solves and how to use it |
 | [DEMO-WALKTHROUGH.md](./DEMO-WALKTHROUGH.md) | Non-technical, click-by-click tour (demo + real-user flow) |
 | [TESTING.md](./TESTING.md) | How to verify every layer, offline and on-chain |
 | [UI-DESIGN-SYSTEM.md](./UI-DESIGN-SYSTEM.md) | Reusable design-system reference (tokens, patterns, motion) |
 | [implementation.md](./implementation.md) | The full build plan and product thesis |
+| [VERCEL-DEPLOYMENT.md](./VERCEL-DEPLOYMENT.md) | Technical deep-dive on Vercel deployment considerations |
 
 ---
 

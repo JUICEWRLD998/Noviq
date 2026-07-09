@@ -1,0 +1,53 @@
+# Railway deployment - exclude unnecessary files
+
+# Build artifacts (will be rebuilt on Railway)
+.next/
+.turbo/
+dist/
+out/
+
+# Dependencies (will be installed fresh)
+node_modules/
+
+# Git
+.git/
+.gitignore
+
+# Environment files (configure via Railway dashboard)
+.env
+.env.local
+.env.*
+!.env.example
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Test and coverage
+coverage/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Documentation (not needed for runtime)
+*.md
+!README.md
+
+# Contracts (not needed for workers - only web app needs this)
+contracts/
+
+# Cache files
+.turbo
+.cache
+.eslintcache
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

@@ -10,10 +10,10 @@ startHealthServer()
 
 // Import and start workers (they will run their main loops)
 Promise.all([
-  import("./indexer.ts").then((m) => {
+  import("./indexer").then(() => {
     console.log("[start-workers] Indexer starting...")
   }),
-  import("./worker.ts").then((m) => {
+  import("./worker").then(() => {
     console.log("[start-workers] Worker starting...")
   }),
 ]).catch((err) => {

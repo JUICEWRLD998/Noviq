@@ -18,7 +18,7 @@ import {
   upsertUser,
 } from "@noviq/db"
 import {
-  HSK_TESTNET,
+  HSK_MAINNET,
   NATIVE_ASSET,
   type PolicyInput,
   covenantAccountAbi,
@@ -31,7 +31,7 @@ import {
 import { type Address, type Hex, encodeFunctionData, formatEther, parseEther } from "viem"
 import { privateKeyToAccount } from "viem/accounts"
 
-const EXPLORER = HSK_TESTNET.explorerUrl
+const EXPLORER = HSK_MAINNET.explorerUrl
 const PAYEE: Address = "0x1111111111111111111111111111111111111111" // allowlisted vendor
 const ACCOUNT_FUNDING = parseEther("0.12")
 const AGENT_GAS_FUNDING = parseEther("0.03")
@@ -113,7 +113,7 @@ async function main() {
   await upsertUser(owner.address)
   await upsertAccount({
     address: accountAddress,
-    chainId: HSK_TESTNET.chainId,
+    chainId: HSK_MAINNET.chainId,
     ownerAddress: owner.address,
     agentAddress: agentAccount.address,
     deployTx: createTx,

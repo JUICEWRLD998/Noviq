@@ -18,7 +18,7 @@ import {
 } from "@noviq/db"
 import { requireServer } from "@noviq/env"
 import {
-  HSK_TESTNET,
+  HSK_MAINNET,
   agentBondAbi,
   covenantAccountFactoryAbi,
   noviqAddresses,
@@ -35,7 +35,7 @@ type RawEventLog<A> = {
   logIndex: number | null
 }
 
-const CURSOR_KEY = "hsk-testnet"
+const CURSOR_KEY = "hsk-mainnet"
 const CONFIRMATIONS = 3n
 const CHUNK = 2_000n
 const SEED_LOOKBACK = 10_000n
@@ -80,7 +80,7 @@ async function ingestRange(fromBlock: bigint, toBlock: bigint): Promise<void> {
     if (!args.account || !args.owner || !args.agent) continue
     await upsertAccount({
       address: args.account,
-      chainId: HSK_TESTNET.chainId,
+      chainId: HSK_MAINNET.chainId,
       ownerAddress: args.owner,
       agentAddress: args.agent,
       ...(log.transactionHash ? { deployTx: log.transactionHash } : {}),

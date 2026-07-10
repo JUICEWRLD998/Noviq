@@ -33,6 +33,20 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.svg",
   },
+  openGraph: {
+    title: "Noviq — programmable trust for autonomous AI money",
+    description: "Don't trust the agent. Trust the covenant.",
+    images: [
+      {
+        url: "/noviq-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Noviq",
+      },
+    ],
+    url: "https://noviq-web-green.vercel.app/",
+    type: "website",
+  },
 }
 
 export default function RootLayout({

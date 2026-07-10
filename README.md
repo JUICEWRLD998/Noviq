@@ -10,7 +10,7 @@
 
 [![HashKey Chain](https://img.shields.io/badge/Chain-HSK_Mainnet-orange)](https://explorer.hsk.xyz) [![Deployed](https://img.shields.io/badge/Status-Live_on_Mainnet-success)](https://explorer.hsk.xyz/address/0x6c4ed8f7571af72b76ebac1d33e855b6e85ce151)
 
-[🎯 Problem](#-the-problem) · [💡 Solution](#-the-thesis) · [🎥 Live Demo](#-signature-demo) · [🏗️ Architecture](#-architecture) · [📜 Contracts](#-deployed-contracts)
+[🎯 Problem](#-the-problem) · [💡 Solution](#-the-thesis) · [🎥 Live Demo](https://youtu.be/l4MpIdXqXXw) · [🏗️ Architecture](#-architecture) · [📜 Contracts](#-deployed-contracts)
 
 </div>
 

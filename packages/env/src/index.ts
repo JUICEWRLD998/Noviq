@@ -84,12 +84,14 @@ export function clientEnv(): ClientEnv {
   return cachedClient
 }
 
-/** Static HSK Chain testnet facts (chainId 133). */
-export const HSK_TESTNET = {
-  chainId: 133,
-  name: "HSK Chain Testnet",
-  rpcUrl: "https://testnet.hsk.xyz",
-  // NOTE: explorer.hsk.xyz is MAINNET; the testnet Blockscout is testnet-explorer.hsk.xyz.
-  explorerUrl: "https://testnet-explorer.hsk.xyz",
+/** Static HSK Chain mainnet facts (chainId 177). */
+export const HSK_MAINNET = {
+  chainId: 177,
+  name: "HSK Chain Mainnet",
+  rpcUrl: "https://mainnet.hsk.xyz",
+  explorerUrl: "https://explorer.hsk.xyz",
   nativeCurrency: { name: "HSK", symbol: "HSK", decimals: 18 },
 } as const
+
+/** @deprecated Use HSK_MAINNET instead */
+export const HSK_TESTNET = HSK_MAINNET

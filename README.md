@@ -91,7 +91,7 @@ fooled; the money is safe — deterministically, regardless of the model.
 | Layer | Choice |
 |---|---|
 | Monorepo | pnpm workspaces + Turborepo |
-| Contracts | Solidity + Foundry + OpenZeppelin → **HSK Chain testnet** (chainId 133) |
+| Contracts | Solidity + Foundry + OpenZeppelin → **HSK Chain Mainnet** (chainId 177) |
 | Web | Next.js 16 (App Router) + TypeScript (strict) |
 | Styling | CSS Modules + CSS variables (3-tier OKLCH tokens), Radix UI primitives |
 | Motion | Framer Motion + GSAP (shared motion tokens) |
@@ -108,7 +108,7 @@ fooled; the money is safe — deterministically, regardless of the model.
 - Node ≥ 20, pnpm 10
 - [Foundry](https://book.getfoundry.sh/) (`forge`, `cast`)
 - A Postgres database (e.g. [Neon](https://neon.tech)) and an [OpenRouter](https://openrouter.ai) API key
-- A browser wallet (MetaMask) on HSK Chain testnet, funded from the [faucet](https://hashkeychain.net/faucet)
+- A browser wallet (MetaMask) on HSK Chain mainnet, funded with HSK tokens
 
 ### 1. Install & configure
 
@@ -130,7 +130,7 @@ pnpm --filter @noviq/web dev     # http://localhost:3000
 
 ### 3. See the whole thing work
 
-Provision a live demo account on testnet, then run one legit action and one attack:
+Provision a live demo account on mainnet, then run one legit action and one attack:
 
 ```bash
 pnpm --filter @noviq/web bootstrap-account   # deploy + fund + set policy + seed DB
@@ -158,15 +158,15 @@ Full matrix — automated tests, live smoke tests, and the on-chain E2E flow —
 
 ## 📜 Deployed contracts
 
-**HSK Chain Testnet** (chainId 133) · explorer: [testnet-explorer.hsk.xyz](https://testnet-explorer.hsk.xyz)
+**HSK Chain Mainnet** (chainId 177) · explorer: [explorer.hsk.xyz](https://explorer.hsk.xyz)
 
 | Contract | Address |
 |---|---|
-| `PolicyGuard` | [`0x3334e3Db8577e184889deAc085d4E55923EcA906`](https://testnet-explorer.hsk.xyz/address/0x3334e3Db8577e184889deAc085d4E55923EcA906) |
-| `CovenantAccountFactory` | [`0xBA055ae34805985089fab405E0f12525684DF1D3`](https://testnet-explorer.hsk.xyz/address/0xBA055ae34805985089fab405E0f12525684DF1D3) |
-| `AgentBond` | [`0x5B38f7f8D7157300A274f591160E3405Ada7fB80`](https://testnet-explorer.hsk.xyz/address/0x5B38f7f8D7157300A274f591160E3405Ada7fB80) |
+| `PolicyGuard` | [`0x6c4ed8f7571af72b76ebac1d33e855b6e85ce151`](https://explorer.hsk.xyz/address/0x6c4ed8f7571af72b76ebac1d33e855b6e85ce151) |
+| `CovenantAccountFactory` | [`0x54f10c245ee7ebd881ca79940e472c9b912ebbc8`](https://explorer.hsk.xyz/address/0x54f10c245ee7ebd881ca79940e472c9b912ebbc8) |
+| `AgentBond` | [`0xf58c9c49688c52336748521b04199f1d141773e1`](https://explorer.hsk.xyz/address/0xf58c9c49688c52336748521b04199f1d141773e1) |
 
-Full deployment metadata: `contracts/deployments/hsk-testnet.json`.
+Full deployment metadata: `contracts/deployments/hsk-mainnet.json`.
 
 ---
 

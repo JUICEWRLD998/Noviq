@@ -1,0 +1,13 @@
+{
+  "name": "noviq-contracts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy:mainnet": "node deploy-mainnet.mjs"
+  },
+  "dependencies": {
+    "viem": "^2.22.8",
+    "dotenv": "^16.4.7"
+  }
+}

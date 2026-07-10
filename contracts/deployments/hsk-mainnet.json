@@ -1,0 +1,27 @@
+{
+  "chainId": 177,
+  "chain": "hsk-mainnet",
+  "deployedAt": "2026-07-10T09:55:49.786Z",
+  "deployer": "0xb75F9F59Aa4b90d90eD00EEcf49aDE1e3514e383",
+  "contracts": {
+    "PolicyGuard": "0x6c4ed8f7571af72b76ebac1d33e855b6e85ce151",
+    "CovenantAccountFactory": "0x54f10c245ee7ebd881ca79940e472c9b912ebbc8",
+    "AgentBond": "0xf58c9c49688c52336748521b04199f1d141773e1"
+  },
+  "transactions": {
+    "PolicyGuard": "0x5261350d88b1ec01675f1d6786d229e3c65794e7117011bc5d170a9cf934903b",
+    "CovenantAccountFactory": "0xfd8f845d0adc2db740b00929c1be208a69288bd91b0c813da00886ab2b8d3001",
+    "AgentBond": "0xc9de514f140636d58373bc6a33aeddccfaf8c4f0890fdcecbd1cda1a9801c541"
+  },
+  "explorerLinks": {
+    "PolicyGuard": "https://explorer.hsk.xyz/address/0x6c4ed8f7571af72b76ebac1d33e855b6e85ce151",
+    "CovenantAccountFactory": "https://explorer.hsk.xyz/address/0x54f10c245ee7ebd881ca79940e472c9b912ebbc8",
+    "AgentBond": "https://explorer.hsk.xyz/address/0xf58c9c49688c52336748521b04199f1d141773e1"
+  },
+  "gasUsed": {
+    "PolicyGuard": "1401209",
+    "CovenantAccountFactory": "1275071",
+    "AgentBond": "578745",
+    "total": "3255025"
+  }
+}

@@ -15,15 +15,13 @@ fs_permissions = [{ access = "read", path = "./out" }]
 [profile.ci]
 verbosity = 4
 
-# HSK Chain testnet (chainId 133)
+# HSK Chain mainnet (chainId 177)
 [rpc_endpoints]
-hsk_testnet = "${HSK_RPC_URL}"
+hsk_mainnet = "${HSK_RPC_URL}"
 
-# HSK explorer is Blockscout-based. Note: explorer.hsk.xyz is MAINNET; the
-# testnet Blockscout lives at testnet-explorer.hsk.xyz. No API key required,
-# but foundry expects a placeholder entry.
+# HSK explorer is Blockscout-based.
 [etherscan]
-hsk_testnet = { key = "${HSK_EXPLORER_API_KEY}", url = "https://testnet-explorer.hsk.xyz/api", chain = 133 }
+hsk_mainnet = { key = "${HSK_EXPLORER_API_KEY}", url = "https://explorer.hsk.xyz/api", chain = 177 }
 
 # See more config options:
 # https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

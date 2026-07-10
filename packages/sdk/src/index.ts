@@ -1,6 +1,6 @@
 // @noviq/sdk — viem bindings, policy schema, shared types.
 // Re-export chain facts for early consumers.
-export { HSK_TESTNET } from "@noviq/env"
+export { HSK_MAINNET, HSK_TESTNET } from "@noviq/env"
 
 // Phase-2 contract layer: typed ABIs + deployed addresses (consumed in Phase 3).
 export * from "./abis"

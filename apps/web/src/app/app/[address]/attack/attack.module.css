@@ -63,6 +63,10 @@
 .err {
   font-size: var(--fs-step--1);
   color: var(--danger);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  line-height: 1.5;
 }
 
 /* ── Split verdict ────────────────────────────────────────────────────────── */

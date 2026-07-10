@@ -60,7 +60,7 @@ async function main() {
 
   const publicClient = createHskPublicClient(process.env.HSK_RPC_URL)
   const ownerWallet = createHskWalletClient({ account: owner, rpcUrl: process.env.HSK_RPC_URL })
-  const factory = noviqAddresses(HSK_TESTNET.chainId).covenantAccountFactory
+  const factory = noviqAddresses(HSK_MAINNET.chainId).covenantAccountFactory
 
   console.log(`Owner (deployer): ${owner.address}`)
   console.log(`Agent (session key): ${agentAccount.address}`)

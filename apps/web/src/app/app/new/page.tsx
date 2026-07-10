@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button"
 import { Input, LabeledField } from "@/components/ui/Field"
 import { useToast } from "@/components/ui/Toast"
 import { shorten } from "@/lib/format"
-import { covenantAccountFactoryAbi, hskTestnet, noviqAddresses } from "@noviq/sdk"
+import { covenantAccountFactoryAbi, hskChain, noviqAddresses } from "@noviq/sdk"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -14,7 +14,7 @@ import { type Address, type Hex, parseEther } from "viem"
 import { useAccount, usePublicClient, useSendTransaction, useWriteContract } from "wagmi"
 import styles from "./new.module.css"
 
-const factory = noviqAddresses(hskTestnet.id).covenantAccountFactory
+const factory = noviqAddresses(hskChain.id).covenantAccountFactory
 
 type Phase = "connect" | "ready" | "deploying" | "deployed" | "funding" | "funded"
 

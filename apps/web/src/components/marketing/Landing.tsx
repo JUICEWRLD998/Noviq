@@ -2,14 +2,14 @@
 
 import { buttonClassName } from "@/components/ui/Button"
 import { shorten } from "@/lib/format"
-import { noviqAddresses } from "@noviq/sdk"
+import { HSK_MAINNET, noviqAddresses } from "@noviq/sdk"
 import Link from "next/link"
 import { AttackBeat } from "./AttackBeat"
 import { HeroBackdrop } from "./HeroBackdrop"
 import { Reveal, RevealGroup, RevealItem } from "./Reveal"
 import styles from "./landing.module.css"
 
-const addrs = noviqAddresses(133)
+const addrs = noviqAddresses(HSK_MAINNET.chainId)
 
 const STEPS = [
   {
@@ -54,7 +54,7 @@ const CONTRACTS = [
   { label: "AgentBond", address: addrs.agentBond },
 ]
 
-const EXPLORER = process.env.NEXT_PUBLIC_HSK_EXPLORER_URL ?? "https://testnet-explorer.hsk.xyz"
+const EXPLORER = process.env.NEXT_PUBLIC_HSK_EXPLORER_URL ?? "https://explorer.hsk.xyz"
 
 export function Landing() {
   return (
@@ -184,7 +184,7 @@ export function Landing() {
           <p className={styles.footerTag}>Don’t trust the agent. Trust the covenant.</p>
         </div>
         <div className={styles.footerContracts}>
-          <span className={styles.footerContractsLabel}>Deployed on HSK Chain testnet</span>
+          <span className={styles.footerContractsLabel}>Deployed on HSK Chain Mainnet</span>
           {CONTRACTS.map((c) => (
             <a
               key={c.label}

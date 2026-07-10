@@ -2,7 +2,7 @@
 // read helpers the app leans on before Phase 4 wires the full flow: `simulate`
 // (dry-run the guard) and `getConfig` (read a covenant back).
 
-import { HSK_TESTNET } from "@noviq/env"
+import { HSK_MAINNET } from "@noviq/env"
 import {
   type Address,
   type Client,
@@ -18,7 +18,7 @@ import { type ReasonCode, reasonLabel } from "./policy"
 /** The shared PolicyGuard singleton, bound to `client`. */
 export function getPolicyGuard<C extends Client>(
   client: C,
-  chainId = HSK_TESTNET.chainId,
+  chainId = HSK_MAINNET.chainId,
 ): GetContractReturnType<typeof policyGuardAbi, C, Address> {
   return getContract({ address: noviqAddresses(chainId).policyGuard, abi: policyGuardAbi, client })
 }
@@ -26,7 +26,7 @@ export function getPolicyGuard<C extends Client>(
 /** The CovenantAccountFactory singleton, bound to `client`. */
 export function getAccountFactory<C extends Client>(
   client: C,
-  chainId = HSK_TESTNET.chainId,
+  chainId = HSK_MAINNET.chainId,
 ): GetContractReturnType<typeof covenantAccountFactoryAbi, C, Address> {
   return getContract({
     address: noviqAddresses(chainId).covenantAccountFactory,
@@ -38,7 +38,7 @@ export function getAccountFactory<C extends Client>(
 /** The AgentBond singleton, bound to `client`. */
 export function getAgentBond<C extends Client>(
   client: C,
-  chainId = HSK_TESTNET.chainId,
+  chainId = HSK_MAINNET.chainId,
 ): GetContractReturnType<typeof agentBondAbi, C, Address> {
   return getContract({ address: noviqAddresses(chainId).agentBond, abi: agentBondAbi, client })
 }

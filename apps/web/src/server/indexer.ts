@@ -42,7 +42,7 @@ const SEED_LOOKBACK = 10_000n
 const GUARD_DEPLOY_BLOCK = 30_037_652n
 const POLL_MS = 5_000
 
-const addrs = noviqAddresses(HSK_TESTNET.chainId)
+const addrs = noviqAddresses(HSK_MAINNET.chainId)
 
 /** getContractEvents with adaptive range-halving on RPC "too many results". */
 async function getEventsSafe(

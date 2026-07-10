@@ -1,4 +1,4 @@
-import { HSK_TESTNET, noviqAddresses } from "@noviq/sdk"
+import { HSK_MAINNET, noviqAddresses } from "@noviq/sdk"
 import { NextResponse } from "next/server"
 import { privateKeyToAccount } from "viem/accounts"
 import { errMessage } from "../_lib"
@@ -26,8 +26,8 @@ export async function GET() {
     }
     return NextResponse.json({
       agentAddress,
-      chainId: HSK_TESTNET.chainId,
-      factory: noviqAddresses(HSK_TESTNET.chainId).covenantAccountFactory,
+      chainId: HSK_MAINNET.chainId,
+      factory: noviqAddresses(HSK_MAINNET.chainId).covenantAccountFactory,
     })
   } catch (err) {
     return NextResponse.json({ error: errMessage(err) }, { status: 500 })

@@ -33,7 +33,7 @@ export default function NewCovenantPage() {
   const [amount, setAmount] = useState("0.5")
   const [error, setError] = useState<string | null>(null)
 
-  const wrongChain = isConnected && chainId !== hskTestnet.id
+  const wrongChain = isConnected && chainId !== hskChain.id
   const gated = !isConnected || wrongChain
 
   async function deploy() {
@@ -115,7 +115,7 @@ export default function NewCovenantPage() {
           <div className={styles.gate}>
             <p className={styles.gateText}>
               {wrongChain
-                ? "Switch your wallet to HSK Chain testnet to continue."
+                ? "Switch your wallet to HSK Chain Mainnet to continue."
                 : "Connect your wallet to deploy a covenant account."}
             </p>
             <ConnectButton />
